@@ -1,0 +1,25 @@
+{
+  "name": "patterns-playwright",
+  "version": "1.0.0",
+  "description": "\"# patterns-playwright\"",
+  "homepage": "https://github.com/Nadezhda0490/patterns-playwright#readme",
+  "bugs": {
+    "url": "https://github.com/Nadezhda0490/patterns-playwright/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nadezhda0490/patterns-playwright.git"
+  },
+  "license": "ISC",
+  "author": "Nadezhda",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.54.1",
+    "@types/node": "^24.0.13",
+    "typescript": "^5.8.3"
+  }
+}
