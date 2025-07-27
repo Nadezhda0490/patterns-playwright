@@ -1,4 +1,6 @@
 import { Page, Locator, FrameLocator } from "@playwright/test";
+import dotenv from "dotenv";
+dotenv.config();
 
 export class MainPage {
   public readonly page: Page;
@@ -14,7 +16,7 @@ export class MainPage {
   }
 
   async navigate() {
-    await this.page.goto("https://www.onliner.by/");
+    await this.page.goto(process.env.BASE_URL || "");
   }
 
   async search(text: string) {

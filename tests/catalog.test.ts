@@ -36,4 +36,37 @@ test.describe("Tests for Catalog page", () => {
     await expect(categorySectionHeader).toHaveText("Детский транспорт");
     await expect(catalogPage.page).toHaveURL(/\/detskiy-transport/);
   });
+
+  test("should open product detail page when clicking on item name", async () => {
+    const catalogPage = await PageFactory.getCatalogPage(browser);
+    await catalogPage.navigate();
+    await catalogPage.selectCategory("Детям и мамам");
+    await catalogPage.selectPopularSection("Бассейны");
+    await catalogPage.acceptCookies();
+    await catalogPage.openSelectedItem(
+      "Каркасный бассейн Intex Prism Frame 26718 (366x122)"
+    );
+
+    const productTitle = catalogPage.getProductTitle();
+
+    await expect(productTitle).toBeVisible();
+    await expect(productTitle).toHaveText(
+      "Каркасный бассейн Intex Prism Frame 26718 (366x122)"
+    );
+    await expect(catalogPage.page).toHaveURL(/\/pool\/intex\/intex26718/);
+  });
+
+  test("should display product image when clicking on item name", async () => {
+    const catalogPage = await PageFactory.getCatalogPage(browser);
+    await catalogPage.navigate();
+    await catalogPage.selectCategory("Детям и мамам");
+    await catalogPage.selectPopularSection("Бассейны");
+    await catalogPage.acceptCookies();
+    await catalogPage.openSelectedItem(
+      "Каркасный бассейн Intex Prism Frame 26718 (366x122)"
+    );
+
+    const productImage = catalogPage.getProductImage();
+    await expect(productImage).toBeVisible();
+  });
 });
